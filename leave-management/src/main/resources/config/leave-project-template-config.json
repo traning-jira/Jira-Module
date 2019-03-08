@@ -1,0 +1,29 @@
+{
+  "issue-type-scheme":
+  {
+    "name": "leave.project.template.issuetype.scheme.name",
+    "description": "leave.project.template.issuetype.scheme.description",
+    "issue-types": [
+      {
+        "key": "leave",
+        "name": "Authorization Leave",
+        "description": "Function authorization leave for all employee",
+        "icon": "/images/icons/leave.png",
+        "workflow": "wf1"
+      }
+    ]
+  },
+  "workflow-scheme":
+  {
+    "name": "leave.project.template.workflow.scheme.name",
+    "description": "leave.project.template.workflow.scheme.description",
+    "default-workflow": "wf1",
+    "workflows": [
+      {
+        "key": "wf1",
+        "name": "leave.project.template.workflow.wf1.name",
+        "workflow-bundle": "/wfb/Leave-project-Management.jwb"
+      }
+    ]
+  }
+}
