@@ -25,9 +25,13 @@
         <resource type="download" name="leave-management.css" location="/css/leave-management.css"/>
         <resource type="download" name="leave-management.js" location="/js/leave-management.js"/>
         <resource type="download" name="images/" location="/images"/>
+        <resource type="download" name="LeaveProjectTemplate.soy" location="/soy/LeaveProjectTemplate.soy"/>
 
         <context>leave-management</context>
     </web-resource>
+    <ao key="ao-module">
+        <entity>com.cmcglobal.plugins.entity.Leave</entity>
+    </ao>
     <project-blueprint key="leave-project-template" weight="90">
         <label key="leave.project.template.name"/>
         <projectTypeKey>business</projectTypeKey>

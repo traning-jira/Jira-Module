@@ -4,5 +4,22 @@
         * Render the information page for My Project Template.
         */
         {template .renderMyProjectTemplateExplanation}
-<p>{getText('my.project.template.info.page.description')}</p>
+<div class="dialog-page-body template-info">
+    <div class="dialog-panel-body pt-content" style="height: 241px; display: block;">
+        <div>
+            <div class="top-panel">
+                <p>{getText('leave.project.template.info.page.description')}</p>
+            </div>
+            <div class="left-panel">
+                <h6>Issue Types</h6>
+                <ul class="project-template-issuetype-list">
+                    <li><span class="issuetype-list-label"><span class="issuetype-icon bug"></span><span class="issuetype-name">Authorization Leave</span></span></li>
+                </ul>
+            </div>
+            <div class="right-panel">
+
+            </div>
+        </div>
+    </div>
+</div>
         {/template}

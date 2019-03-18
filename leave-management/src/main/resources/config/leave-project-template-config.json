@@ -25,5 +25,33 @@
         "workflow-bundle": "/wfb/Leave-project-Management.jwb"
       }
     ]
+  },
+  "issue-type-screen-scheme": {
+    "name": "Authorization Leave Management Issue Type Screen Scheme",
+    "description": "A collection of tabs and fields, used for tracking Authorization Leave and Projects.",
+    "default-screen-scheme": "leaveDefaultScreenScheme",
+    "screens": [
+      {
+        "key": "leaveDefaultScreen",
+        "name": "Authorization Leave Management Default Screen",
+        "tabs": [
+          {
+            "name": "Field Tab",
+            "fields": [
+              "summary",
+              "reporter",
+              "assignee"
+            ]
+          }
+        ]
+      }
+    ],
+    "screen-schemes": [
+      {
+        "key": "leaveDefaultScreenScheme",
+        "name": "Authorization Management Screen Scheme",
+        "default-screen": "leaveDefaultScreen"
+      }
+    ]
   }
 }
