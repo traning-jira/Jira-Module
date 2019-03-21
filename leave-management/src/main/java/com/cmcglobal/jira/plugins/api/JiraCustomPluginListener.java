@@ -103,7 +103,6 @@ public class JiraCustomPluginListener implements InitializingBean, DisposableBea
 //                    customField.updateValue(null, issue, mVal, new DefaultIssueChangeHolder());
 //                }
 
-
             }
 
         }

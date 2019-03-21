@@ -1,49 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
-    <plugin-info>
-        <description>${project.description}</description>
-        <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
-        <param name="plugin-icon">images/pluginIcon.png</param>
-        <param name="plugin-logo">images/pluginLogo.png</param>
-    </plugin-info>
-
-    <!-- add our i18n resource -->
-    <resource type="i18n" name="i18n" location="leave-management"/>
-    
-    <!-- add our web resources -->
-    <web-resource key="leave-management-resources" name="leave-management Web Resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-
-        <transformation extension="soy">
-            <transformer key="soyTransformer"/>
-        </transformation>
-        <transformation extension="js">
-            <transformer key="jsI18n"/>
-        </transformation>
-
-
-        <resource type="download" name="leave-management.css" location="/css/leave-management.css"/>
-        <resource type="download" name="leave-management.js" location="/js/leave-management.js"/>
-        <resource type="download" name="images/" location="/images"/>
-        <resource type="download" name="LeaveProjectTemplate.soy" location="/soy/LeaveProjectTemplate.soy"/>
-
-        <context>leave-management</context>
-    </web-resource>
-    <ao key="ao-module">
-        <entity>com.cmcglobal.plugins.entity.Leave</entity>
-    </ao>
-    <project-blueprint key="leave-project-template" weight="90">
-        <label key="leave.project.template.name"/>
-        <projectTypeKey>business</projectTypeKey>
-        <description key="leave.project.template.description"/>
-        <longDescription key="leave.project.template.description.long"/>
-        <infoPage soy-template="JIRA.Templates.ProjectTemplates.Tutorial.renderMyProjectTemplateExplanation"/>
-        <icon location="images/leave-template-icon.png"/>
-        <backgroundIcon location="images/leave-template-background.png"/>
-        <add-project>
-            <hook class="com.cmcglobal.jira.plugins.hook.MyAddProjectHook"/>
-            <descriptor file="/config/leave-project-template-config.json"/>
-        </add-project>
-    </project-blueprint>
-    
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="leave-management"/>
+  <!-- add our web resources -->
+  <web-resource key="leave-management-resources" name="leave-management Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <transformation extension="soy">
+      <transformer key="soyTransformer"/>
+    </transformation>
+    <transformation extension="js">
+      <transformer key="jsI18n"/>
+    </transformation>
+    <resource type="download" name="leave-management.css" location="/css/leave-management.css"/>
+    <resource type="download" name="leave-management.js" location="/js/leave-management.js"/>
+    <resource type="download" name="images/" location="/images"/>
+    <resource type="download" name="LeaveProjectTemplate.soy" location="/soy/LeaveProjectTemplate.soy"/>
+    <context>leave-management</context>
+  </web-resource>
+  <ao key="ao-module">
+    <entity>com.cmcglobal.jira.plugins.entity.Leave</entity>
+  </ao>
+  <project-blueprint key="leave-project-template" weight="90">
+    <label key="leave.project.template.name"/>
+    <projectTypeKey>business</projectTypeKey>
+    <description key="leave.project.template.description"/>
+    <longDescription key="leave.project.template.description.long"/>
+    <infoPage soy-template="JIRA.Templates.ProjectTemplates.Tutorial.renderMyProjectTemplateExplanation"/>
+    <icon location="images/leave-template-icon.png"/>
+    <backgroundIcon location="images/leave-template-background.png"/>
+    <add-project>
+      <hook class="com.cmcglobal.jira.plugins.hook.MyAddProjectHook"/>
+      <descriptor file="/config/leave-project-template-config.json"/>
+    </add-project>
+  </project-blueprint>
+  <report name="Leave Report" i18n-name-key="leave-report.name" key="leave-report" class="com.cmcglobal.jira.plugins.jira.reports.LeaveReport">
+    <description key="leave-report.description">The Leave Report Plugin</description>
+    <resource name="view" type="velocity" location="/templates/reports/leave-report/view.vm"/>
+    <resource name="i18n" type="i18n" location="LeaveReport"/>
+    <label key="leave-report.label"/>
+    <!-- the properties of this report which the user must select before running it -->
+    <!-- Uncomment and edit properties...
+    <properties>
+        <property>
+            <key>versionId</key>
+            <name>common.concepts.version</name>
+            <description>report.timetracking.version.description</description>
+            <type>select</type>
+            <values class="com.atlassian.jira.portal.VersionOptionalValuesGenerator"/>
+        </property>
+        <property>
+            <key>sortingOrder</key>
+            <name>report.timetracking.sortingorder</name>
+            <description>report.timetracking.sortingorder.description</description>
+            <type>select</type>
+            <values class="com.atlassian.jira.portal.SortingValuesGenerator"/>
+        </property>
+    </properties>
+    -->
+  </report>
+  <servlet name="Leave Servlet" i18n-name-key="leave-servlet.name" key="leave-servlet" class="com.cmcglobal.jira.plugins.reports.LeaveServlet">
+    <description key="leave-servlet.description">The Leave Servlet Plugin</description>
+    <url-pattern>/leaveservlet</url-pattern>
+  </servlet>
 </atlassian-plugin>
